@@ -1,0 +1,8 @@
+{  
+  "minimum-stability" : "dev",
+  "require": {
+	"yiisoft/yii": "1.1.*",
+    "sendgrid/sendgrid": "2.0.3",
+    "ircmaxell/password-compat": "dev-master"
+  }
+}
