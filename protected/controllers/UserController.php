@@ -25,4 +25,20 @@ class UserController extends CController
         );
     }
 
+    /**
+     * Displays a list of all the available users
+     */
+    public function actionIndex()
+    {
+        $users = new User('search');
+        $users->unsetAttributes();
+
+        if (isset($_GET['Users']))
+            $users->attributes = $_GET['Users'];
+
+        $this->render('index', array(
+            'model' => $users
+        ));
+    }
+
 }
