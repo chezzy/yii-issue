@@ -20,66 +20,48 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		/*
+
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
+			'password'=>'123',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		*/
+
 	),
 
 	// application components
 	'components'=>array(
-
-		'user'=>array(
-			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
+		//CREATE USER 'ch4_issue'@'localhost' IDENTIFIED BY 'ch4_issue';
+		//CREATE DATABASE IF NOT EXISTS  `ch4_issue` ;
+		//GRANT ALL PRIVILEGES ON  `ch4\_issue` . * TO  'ch4_issue'@'localhost';
+		'db' => array(
+			'class' => 'CDbConnection',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=issue',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '',
+			'charset' => 'utf8',
+			'schemaCachingDuration' => '3600',
+			'enableProfiling' => true,
 		),
-
-		// uncomment the following to enable URLs in path-format
-		/*
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-		),
-		*/
-
-		// database settings are configured in database.php
-		'db'=>require(dirname(__FILE__).'/database.php'),
 
 		'errorHandler'=>array(
-			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
 
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
+		'urlManager'=>array(
+			'urlFormat'=>'path',
+			'showScriptName'=>true,
+			'rules'=>array(
+				'/' => '/issue/index',
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-		),
-
+		)
 	),
 
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
+	'params' => array(
+		//'sendgrid' => require __DIR__ . '/params.php'
+	)
 );
