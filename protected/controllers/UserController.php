@@ -86,6 +86,16 @@ class UserController extends CController
         throw new CHttpException(400, 'Bad Request');
     }
 
+    public function actionView($id = null)
+    {
+        if ($id == null)
+            throw new CHttpException(400, 'Missing ID argument');
+
+        $user = $this->loadModel($id);
+        $issues = new
+
+    }
+
     /**
      * Loads a model with a given ID, and throws the appropriate error
      * @param  int $id
