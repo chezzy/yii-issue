@@ -62,6 +62,6 @@ return array(
 	),
 
 	'params' => array(
-		//'sendgrid' => require __DIR__ . '/params.php'
+		'sendgrid' => require __DIR__ . '/params.php'
 	)
 );
