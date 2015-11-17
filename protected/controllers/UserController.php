@@ -91,8 +91,26 @@ class UserController extends CController
         if ($id == null)
             throw new CHttpException(400, 'Missing ID argument');
 
+        // Retrieve the requested user
         $user = $this->loadModel($id);
-        $issues = new
+
+        // Retrieve issues assigned to this user that are NOT resolved
+        $issues = new Issue('search');
+        $issues->unsetAttributes();
+
+        if (isset($_GET['Issue']))
+            $issues->attributes = $_GET['Issue'];
+
+        // Don't search resolved issues
+        $issues->status_id = '<5';
+
+        $issues->customer_id = $user->id;
+
+        $this->render('view', array(
+           'user' => $user,
+            'issues' => $issues,
+        ));
+
 
     }
 
