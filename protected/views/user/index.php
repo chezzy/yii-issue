@@ -1,7 +1,7 @@
 <h3>Manage Users</h3>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'itemsCssClass' => 'table table-striped',
-    'enableSorting' => true,
+    'enableSorting' => false,
     'dataProvider'=>$model->search(),
     'columns' => array(
         'id',

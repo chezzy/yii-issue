@@ -86,6 +86,10 @@ class UserController extends CController
         throw new CHttpException(400, 'Bad Request');
     }
 
+    /**
+     * Shows the users currently assigned issues and some information relating to that issue
+     * @param  int $id
+     */
     public function actionView($id = null)
     {
         if ($id == null)
@@ -107,11 +111,9 @@ class UserController extends CController
         $issues->customer_id = $user->id;
 
         $this->render('view', array(
-           'user' => $user,
-            'issues' => $issues,
+            'user' 	 => $user,
+            'issues' => $issues
         ));
-
-
     }
 
     /**
@@ -121,7 +123,7 @@ class UserController extends CController
      */
     private function loadModel($id = null)
     {
-        if (id == null)
+        if ($id == null)
             throw new CHttpException(400, 'Missing ID argument');
 
         $model = User::model()->findByPk($id);
