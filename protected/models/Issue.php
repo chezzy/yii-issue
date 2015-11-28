@@ -150,7 +150,7 @@ class Issue extends CActiveRecord
 	 */
 	public function afterSave()
 	{
-		// If this is a NEW issue, send the user an email with the details
+/*		// If this is a NEW issue, send the user an email with the details
 		$user = User::model()->findByPk($this->customer_id);
 
 		// Init the SendGrid object and the Email Object
@@ -181,7 +181,7 @@ class Issue extends CActiveRecord
 				// Send the SendGrid email
 				$sendgrid->send($email);
 			}
-		}
+		}*/
 
 		return parent::afterSave();
 	}

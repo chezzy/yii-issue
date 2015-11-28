@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'statuses':
  * @property integer $id
- * @property string $id
+
  * @property integer $created
  * @property integer $updated
  *
