@@ -88,4 +88,24 @@ class IssueController extends CController
         ));
     }
 
+    public function actionCreate()
+    {
+        $issue = new Issue();
+
+        if (isset($_POST['Issue']))
+        {
+            $issue->attributes = $_POST['Issue'];
+
+            if ($issue->save())
+            {
+                Yii::app()->user->setFlash('success', "Issue #{$issue->id} has successfully been created");
+                $this->redirect($this->createUrl('issue/update', array('id' => $issue->id)));
+            }
+        }
+
+        $this->render('create', array(
+            'model' => $issue
+        ));
+    }
+
 }

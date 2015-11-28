@@ -4,7 +4,7 @@
 	</div>
 <?php endif; ?>
 <h3><?php echo $model->isNewRecord ? 'Create New User' : 'Update User ' . CHtml::encode($model->name) . " (#{$model->id})"; ?></h3>
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form = $this->beginWidget('CActiveForm', array(
 	'id'=>'project-form',
 	'htmlOptions' => array(
 		'class' => 'form-horizontal',
