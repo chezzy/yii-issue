@@ -79,7 +79,7 @@ class IssueController extends CController
                     $this->redirect($this->createUrl('issue/update', array('id' => $issue->id)));
             }
 
-            $issues->title = $_GET['query'];
+            $issues->title       = $_GET['query'];
             $issues->description = $_GET['query'];
         }
 
@@ -88,10 +88,14 @@ class IssueController extends CController
         ));
     }
 
+    /**
+     * Handles the creation of new issues by the customer
+     */
     public function actionCreate()
     {
         $issue = new Issue();
 
+        // If the POST attributes are set
         if (isset($_POST['Issue']))
         {
             $issue->attributes = $_POST['Issue'];
